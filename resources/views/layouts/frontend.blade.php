@@ -17,7 +17,7 @@
     
 </head>
 
-<body class="font-sans antialiased">
+<body>
     <!--Aqui carga el content del frontend -->
     <main>
         @include('layouts.partials.navbar')
