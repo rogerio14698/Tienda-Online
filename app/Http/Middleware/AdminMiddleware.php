@@ -14,10 +14,18 @@ class AdminMiddleware
      *
      * @param  Closure(Request): (Response)  $next
      */
+    // Handle the incoming request and check for admin role
     public function handle(Request $request, Closure $next): Response
     {
+        // Check if the user is authenticated
         if(Auth::check()){
-            return $next($request);
+            // Check if the authenticated user is an admin
+            if(Auth::user()->role == 'admin'){
+                return $next($request);
+            }
+        }else{
+            // Redirect to login if the user is not authenticated
+            return redirect('/login');
         }
         abort(401);
         
