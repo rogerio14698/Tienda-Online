@@ -3,19 +3,17 @@
 namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\ValidationRule;
-use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
-class CategoryRequest extends FormRequest
+class BrandFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        // Only allow authorized users to make this request
         return Auth::check();
     }
 
@@ -29,17 +27,10 @@ class CategoryRequest extends FormRequest
         return [
             'uuid' => 'required|uuid',
             'name' => 'required|string|max:255',
-            'slug' => [
-                'required','string','max:255',
-                Rule::unique('categories', 'slug')->ignore($this->route('category'))
-            ],
-            'description' => 'nullable|string',
-            'status' => 'required|boolean',
-            'popular' => 'required|boolean',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'meta_title' => 'nullable|string|max:255',
-            'meta_description' => 'nullable|string|max:255',
-            'meta_keywords' => 'nullable|string|max:255',
+            'is_active' => 'required|boolean',
+            
+
         ];
     }
 
@@ -48,10 +39,8 @@ class CategoryRequest extends FormRequest
         // Prepare the data before validation
         $this->merge([
             'uuid' => (string) Str::uuid(),
-            // El slug es obligatorio, pero ignoramos el id actual si estamos editando
-            'slug' => Str::slug($this->name),
-            'popular' => $this->popular == true ? 1 : 0,
-
+            'is_active' => $this->is_active == true ? 1 : 0,
+    
         ]);
     }
 }

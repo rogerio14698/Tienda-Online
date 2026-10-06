@@ -2,11 +2,10 @@
 @section('content')
     <div class="card m-3">
         <div class="card-header">
-            <h4 class="mb-0">Categorías
-                <a href="{{ url('admin/categories/create') }}" class="btn btn-primary float-end">Agregar Categoría</a>
+            <h4 class="mb-0 ">Brands
+                <a href="{{ url('admin/brands/create') }}" class="btn btn-primary float-end">Agregar Marcas</a>
             </h4>
         </div>
-        
         <div class="card-body">
             @session('status')
                 <div class="alert alert-success">
@@ -19,41 +18,41 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Nombre Categoria</th>
-                        <th>Estado</th>
-                        <th>Pupular</th>
+                        <th>Nombre Marca</th>
+                        <th>Is Active</th>
                         <th>Imagen</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($categories as $item)
+                    @foreach ($brands as $item)
                         <tr>
                             <td>{{ $item->id }}</td>
                             <td>{{ $item->name }}</td>
                             <td>{{ $item->status == 1 ? 'Activo' : 'Inactivo' }}</td>
-                            <td>{{ $item->popular == 1 ? 'Si' : 'No' }}</td>
                             <td>
                                 @if ($item->image)
-                                    <img src="{{ asset($item->image) }}" style="width: 100px; height: 100px;"
-                                        alt="Imagen Categoria Muestra" />
+                                    <img src="{{ asset($item->image) }}" style="width: 80px; height: 80px;"
+                                        alt="Imagen Marca Muestra" />
                                 @else
                                     <p>No hay imagen disponible</p>
                                 @endif
                             </td>
                             <td>
-                                <a href="{{ route('categories.show', $item->id) }}"
-                                    class="btn btn-primary btn-sm">Mostrar</a>
-                                <a href="{{ route('categories.edit', $item->id) }}"
-                                    class="btn btn-warning btn-sm">Editar</a>
-                                <a href="{{ route('categories.delete', $item->id) }}" class="btn btn-danger btn-sm">Eliminar</a>
+                                <a href="{{ route('brands.show', $item->id) }}" class="btn btn-primary btn-sm">Mostrar</a>
+                                <a href="{{ route('brands.edit', $item->id) }}" class="btn btn-warning btn-sm">Editar</a>
+                                <a href="{{ route('brands.destroy', $item->id) }}" class="btn btn-danger btn-sm"
+                                    onclick="event.preventDefault(); document.getElementById('delete-form-{{ $item->id }}').submit();">Eliminar</a>
+                                <form id="delete-form-{{ $item->id }}"
+                                    action="{{ route('brands.destroy', $item->id) }}" method="POST"
+                                    style="display: none;">
+                                    @csrf
+                                    @method('DELETE')
+                                </form>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
-
         </div>
-
-    </div>
-@endsection
+    @endsection

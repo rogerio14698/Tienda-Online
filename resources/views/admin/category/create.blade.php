@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-    <div class="card mt-3">
+    <div class="card m-3">
         <div class="card-header">
             <h4 class="mb-0">Add Category
                 <a href="{{ url('admin/categories') }}" class="btn btn-danger float-end">Back</a>
@@ -44,8 +44,8 @@
 
 
                     <div class="col-md-12">
-                        <label for="" class="">Subir Imagen</label>
-                        <input type="file" name="image" class="form-control" />
+                        <label for="imageCategory" >Subir Imagen</label>
+                        <input type="file" name="image" id="imageCategory" class="form-control" />
                     </div>
                     <div class="col-md-12 mt-4">
                         <h4>SEO Details</h4>
