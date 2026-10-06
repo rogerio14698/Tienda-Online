@@ -23,7 +23,7 @@
             <!-- Fin Categories -->
 
             <!--Marcas -->
-             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseBrand"
+            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseBrand"
                 aria-expanded="false" aria-controls="collapseBrand">
                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                 Marcas
@@ -37,6 +37,24 @@
                 </nav>
             </div>
             <!-- Fin Marcas -->
+            <!--Producto -->
+            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseProduct"
+                aria-expanded="false" aria-controls="collapseProduct">
+                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                Productos
+                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+
+            <div class="collapse" id="collapseProduct" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" href="{{ url('admin/products/create') }}">Crear Producto</a>
+                    <a class="nav-link" href="{{ url('admin/products') }}">Ver Producto</a>
+                </nav>
+            </div>
+            <!-- Fin Producto -->
+
+
+
             <div class="sb-sidenav-menu-heading">Addons</div>
             <a class="nav-link" href="charts.html">
                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>

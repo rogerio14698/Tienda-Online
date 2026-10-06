@@ -14,7 +14,7 @@
             @endsession
 
             {{-- Tabla donde muestro todas las categorias --}}
-            <table class="table table-bordered table-striped">
+            <table class="table table-bordered bg-light">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -26,11 +26,11 @@
                 </thead>
                 <tbody>
                     @foreach ($brands as $item)
-                        <tr>
-                            <td>{{ $item->id }}</td>
+                        <tr class="align-middle">
+                            <td class="align-middle justify-content-center"><strong>{{ $item->id }}</strong></td>
                             <td>{{ $item->name }}</td>
                             <td>{{ $item->status == 1 ? 'Activo' : 'Inactivo' }}</td>
-                            <td>
+                            <td class="justify-content-center" >
                                 @if ($item->image)
                                     <img src="{{ asset($item->image) }}" style="width: 80px; height: 80px;"
                                         alt="Imagen Marca Muestra" />
@@ -38,7 +38,7 @@
                                     <p>No hay imagen disponible</p>
                                 @endif
                             </td>
-                            <td>
+                            <td class="m-3 g-1">
                                 <a href="{{ route('brands.show', $item->id) }}" class="btn btn-primary btn-sm">Mostrar</a>
                                 <a href="{{ route('brands.edit', $item->id) }}" class="btn btn-warning btn-sm">Editar</a>
                                 <a href="{{ route('brands.destroy', $item->id) }}" class="btn btn-danger btn-sm"
