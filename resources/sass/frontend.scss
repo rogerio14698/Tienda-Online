@@ -1,0 +1,8 @@
+// 1. Funciones de Bootstrap (necesarias para escape-svg, etc.)
+@import 'bootstrap/scss/functions';
+
+// 2. Nuestras variables (deben ir antes de las variables de Bootstrap, que usan !default)
+@import 'public/carousel/carousel';
+
+// 3. Bootstrap completo
+@import 'bootstrap/scss/bootstrap';

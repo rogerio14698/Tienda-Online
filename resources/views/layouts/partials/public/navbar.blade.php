@@ -45,12 +45,12 @@
                             </li>
                         </ul>
                     </li>
-
-
-
-
                     <li class="nav-item">
-                        <a href="{{ url('/dashboard') }}"class="nav-link">Dashboard</a>
+                        @if (Auth::user()->role == 'admin')
+                            <a href="{{ url('/admin/dashboard') }}"class="nav-link">Dashboard</a>
+                            @else
+                                 <a href="{{ url('/dashboard') }}"class="nav-link">Dashboard</a>
+                        @endif
                     </li>
                 @else
                     <li class="nav-item">
